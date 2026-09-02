@@ -1,66 +1,67 @@
 # Nano Banana Image Prompt — Photoreal Character Edition
 
-Agent skill untuk menyusun prompt Google Nano Banana (Nano Banana 2 & Nano Banana Pro)
-dengan modul khusus **karakter manusia fotorealistis yang tidak terlihat seperti AI**.
+An agent skill for composing Google Nano Banana prompts (Nano Banana 2 and Nano Banana
+Pro), with a dedicated module for **photorealistic human characters that do not look
+AI-generated**.
 
-Skill ini menggabungkan panduan prompting resmi Google dengan tiga modul tambahan:
+The skill combines Google's official prompting guidance with three added modules:
 
-| Modul | Fungsi |
+| Module | What it does |
 |---|---|
-| **Realism Core** | Blok kualitas teknis wajib (pori-pori, subsurface scattering, 8K HDR, editorial quality) yang ditempel di akhir setiap prompt berisi manusia |
-| **Anti-AI-Look Checklist** | Aturan imperfeksi, pencahayaan natural, dan bahasa kamera yang membuat gambar lolos dari kesan "hasil AI" |
-| **Identity Lock** | Template *character sheet* agar wajah karakter berulang tidak berubah antar gambar |
+| **Realism Core** | The mandatory technical quality block (pores, subsurface scattering, 8K HDR, editorial quality) appended to the end of every prompt containing a person |
+| **Anti-AI-Look Checklist** | Rules for imperfection, natural light, and camera language that keep an image from reading as "AI output" |
+| **Identity Lock** | A *character sheet* template that keeps a recurring character's face from drifting between images |
 
 ---
 
-## Struktur Repository
+## Repository structure
 
 ```
 nano-banana-image-prompt/
-├── README.md                       ← file ini
+├── README.md                       ← this file
 ├── LICENSE
 ├── .gitignore
 ├── .claude-plugin/
-│   ├── plugin.json                 ← manifest plugin Claude Code
-│   └── marketplace.json            ← agar repo bisa dipasang dari URL-nya
-├── install.sh                      ← installer manual (copy file)
+│   ├── plugin.json                 ← Claude Code plugin manifest
+│   └── marketplace.json            ← lets the repo be installed from its URL
+├── install.sh                      ← manual installer (file copy)
 ├── skills/
 │   └── image-prompt/
-│       └── SKILL.md                ← skill utama
+│       └── SKILL.md                ← the skill itself
 ├── docs/
-│   ├── character-sheets.md         ← cara membuat & merawat character sheet
-│   └── troubleshooting.md          ← diagnosis kalau hasil masih terlihat AI
+│   ├── character-sheets.md         ← how to build and maintain a character sheet
+│   └── troubleshooting.md          ← diagnosis when results still look AI
 └── examples/
-    └── prompt-library.md           ← prompt siap pakai per kategori
+    └── prompt-library.md           ← ready-to-use prompts by category
 ```
 
-Yang benar-benar dibaca oleh agent hanyalah `skills/image-prompt/SKILL.md`.
-Sisanya dokumentasi untuk manusia.
+The only file the agent actually reads is `skills/image-prompt/SKILL.md`. Everything
+else is documentation for humans.
 
 ---
 
-## Instalasi
+## Installation
 
-### Cara yang disarankan — sebagai plugin Claude Code
+### Recommended — as a Claude Code plugin
 
-Cukup dari URL repo, tanpa clone manual. Di dalam sesi Claude Code:
+Straight from the repo URL, no manual clone. Inside a Claude Code session:
 
 ```
 /plugin marketplace add rifal-m/nano-banana-image-prompt
 /plugin install nano-banana-image-prompt@rifal-m-skills
 ```
 
-Baris pertama menambahkan repo ini sebagai marketplace; baris kedua memasang plugin
-di dalamnya. Formatnya `plugin@marketplace` — nama marketplace-nya `rifal-m-skills`,
-bukan nama repo, karena marketplace yang sama akan menampung skill berikutnya.
+The first line adds this repo as a marketplace; the second installs the plugin inside
+it. The format is `plugin@marketplace` — the marketplace is named `rifal-m-skills`
+rather than after the repo, because the same marketplace will host later skills.
 
-Skill-nya ikut ter-update saat repo berubah, dan bisa dilepas lewat `/plugin`.
+The skill updates as the repo changes, and can be removed through `/plugin`.
 
-> Jangan mengunduh `SKILL.md` dari root repo — file itu tidak ada di root.
-> Lokasi sebenarnya `skills/image-prompt/SKILL.md`, dan Claude Code menemukannya
-> lewat field `skills` di `.claude-plugin/plugin.json`.
+> Do not download `SKILL.md` from the repo root — it is not there. The real path is
+> `skills/image-prompt/SKILL.md`, and Claude Code finds it through the `skills` field
+> in `.claude-plugin/plugin.json`.
 
-### Cara alternatif — clone lalu copy
+### Alternative — clone and copy
 
 ```bash
 git clone https://github.com/rifal-m/nano-banana-image-prompt.git
@@ -68,11 +69,11 @@ cd nano-banana-image-prompt
 ./install.sh
 ```
 
-Installer menyalin skill ke Claude Code dan/atau Gemini CLI, tergantung folder mana
-yang ada di mesin Anda. Pakai cara ini kalau tidak memakai sistem plugin, atau untuk
+The installer copies the skill into Claude Code and/or Gemini CLI, depending on which
+directories exist on your machine. Use this if you are not on the plugin system, or for
 Gemini CLI.
 
-### Satu file, tanpa clone
+### Single file, no clone
 
 ```bash
 mkdir -p ~/.claude/skills/image-prompt
@@ -80,27 +81,27 @@ curl -fsSL https://raw.githubusercontent.com/rifal-m/nano-banana-image-prompt/ma
   -o ~/.claude/skills/image-prompt/SKILL.md
 ```
 
-Restart sesi, lalu panggil dengan `/image-prompt`.
+Start a new session, then call it with `/image-prompt`.
 
-### Gemini CLI / tool lintas-platform (manual)
+### Gemini CLI / cross-platform tools (manual)
 
 ```bash
 mkdir -p ~/.agents/skills/image-prompt
 cp skills/image-prompt/SKILL.md ~/.agents/skills/image-prompt/SKILL.md
 ```
 
-### Skill per-project (bukan global)
+### Per-project skill (instead of global)
 
-Kalau skill ini hanya untuk satu proyek — misalnya satu brand atau satu seri karakter —
-simpan di dalam repo proyek tersebut:
+When the skill belongs to one project only — a single brand, or one character series —
+keep it inside that project's repo.
 
-Dari dalam clone repo ini, installer sudah menyediakannya:
+From inside a clone of this repo, the installer already handles it:
 
 ```bash
 ./install.sh --project
 ```
 
-Atau manual, dijalankan dari root proyek tujuan:
+Or manually, run from the root of the target project:
 
 ```bash
 mkdir -p .claude/skills/image-prompt
@@ -108,144 +109,144 @@ curl -fsSL https://raw.githubusercontent.com/rifal-m/nano-banana-image-prompt/ma
   -o .claude/skills/image-prompt/SKILL.md
 ```
 
-Skill per-project menang atas skill global dengan nama sama, jadi Anda bisa punya versi
-berbeda per klien.
+A per-project skill wins over a global skill of the same name, so you can keep a
+different version per client.
 
 ### Claude.ai / Claude Desktop
 
-Unggah `SKILL.md` sebagai skill di pengaturan, atau lampirkan filenya ke percakapan lalu
-minta: *"pakai skill ini untuk bikin prompt"*.
+Upload `SKILL.md` as a skill in settings, or attach the file to a conversation and ask:
+*"use this skill to write the prompt"*.
 
-### Verifikasi
+### Verify
 
 ```bash
 ls ~/.claude/skills/image-prompt/SKILL.md
 head -5 ~/.claude/skills/image-prompt/SKILL.md
 ```
 
-Baris pertama harus tepat `---`. Kalau ada spasi, komentar, atau baris kosong sebelum
-frontmatter, skill tidak akan terdeteksi.
+The first line must be exactly `---`. A space, a comment, or a blank line before the
+frontmatter and the skill will not be detected.
 
 ---
 
-## Cara Penggunaan
+## Usage
 
-### 1. Pemakaian dasar
+### 1. Basic use
 
 ```
 /image-prompt
 ```
 
-Agent akan menanyakan 2–3 pertanyaan untuk mengisi celah, lalu mengeluarkan prompt
-berbahasa Inggris beserta alasan tiap pilihan.
+The agent asks 2–3 questions to fill the gaps, then returns an English prompt along
+with the reasoning behind each choice.
 
-Atau langsung sebutkan kebutuhannya:
-
-```
-/image-prompt potret editorial perempuan 28 tahun di co-working space Bali,
-cahaya sore dari jendela, untuk halaman profil perusahaan
-```
-
-### 2. Alur untuk karakter berulang
-
-Ini alur utama repo ini. Sekali setup, dipakai terus.
-
-**Langkah 1 — Buat character sheet.**
+Or state the need directly:
 
 ```
-/image-prompt buatkan character sheet untuk karakter baru bernama Aleira,
-perempuan 28 tahun, Indonesia, wajah oval, rambut hitam sebahu
+/image-prompt editorial portrait of a woman in her late twenties in a Bali
+co-working space, late afternoon window light, for a company profile page
 ```
 
-Simpan hasilnya ke `docs/character-sheets.md` dan **commit**. Sheet ini jadi sumber
-kebenaran tunggal untuk wajah Aleira.
+### 2. The recurring-character workflow
 
-**Langkah 2 — Panggil sheet-nya di setiap prompt.**
+This is the main flow of this repo. Set up once, reuse indefinitely.
 
-```
-/image-prompt Aleira (pakai character sheet yang tersimpan) sedang berdiri
-di lobi kantor saat pagi, candid, half-body
-```
-
-**Langkah 3 — Jangan pernah menulis ulang sheet-nya.** Tempel apa adanya, kata per kata.
-Mengubah satu kata deskripsi wajah berarti mengubah wajahnya di hasil render.
-
-### 3. Anatomi prompt yang dihasilkan
-
-Setiap prompt berisi manusia punya dua bagian:
+**Step 1 — Build the character sheet.**
 
 ```
-[BADAN PROMPT — kalimat naratif]
-Deskripsi scene, karakter, aksi, cahaya, kamera, dan imperfeksi.
-Ditulis seperti brief ke fotografer, bukan daftar keyword.
+/image-prompt build a character sheet for a new character named Aleira,
+woman, 28, Indonesian, oval face, shoulder-length black hair
+```
 
-[REALISM RIDER — daftar teknis, selalu di akhir]
+Save the result into `docs/character-sheets.md` and **commit it**. That sheet becomes
+the single source of truth for Aleira's face.
+
+**Step 2 — Call the sheet in every prompt.**
+
+```
+/image-prompt Aleira (use the saved character sheet) standing in the office
+lobby in the morning, candid, half-body
+```
+
+**Step 3 — Never rewrite the sheet.** Paste it as-is, word for word. Changing one word
+of the facial description changes the face in the render.
+
+### 3. Anatomy of the generated prompt
+
+Every prompt containing a person has two parts:
+
+```
+[PROMPT BODY — narrative sentences]
+The scene, character, action, light, camera, and imperfections.
+Written like a brief to a photographer, not a keyword list.
+
+[REALISM RIDER — technical list, always last]
 Maintain perfect identity. Show realistic pores, skin micro-texture, authentic skin
 translucency, realistic subsurface scattering, professional full-frame camera quality,
 sharp focus on the eyes, cinematic realism, detailed facial features, realistic skin
 rendering, 8K HDR, editorial photography quality.
 ```
 
-Pemisahan ini disengaja. Badan prompt harus naratif karena model merespons arahan
-kreatif lebih baik daripada tag. Rider boleh berbentuk daftar karena fungsinya
-spesifikasi kualitas, bukan deskripsi scene.
+The split is deliberate. The body must be narrative because the model responds to
+creative direction better than to tags. The rider is allowed to be a list because it
+functions as a quality specification, not as scene description.
 
-### 4. Iterasi
+### 4. Iterate
 
-Setelah gambar jadi, jangan generate ulang dari nol. Gunakan editing konversasional:
+Once an image exists, do not regenerate from scratch. Use conversational editing:
 
 ```
-ubah cahaya sore jadi mendung, sisanya pertahankan
-hapus orang di background, ganti dengan tanaman
+change the afternoon light to overcast, keep everything else
+remove the person in the background, put a plant there instead
 ```
 
-Model akan menyesuaikan cahaya, pantulan, dan fisika secara otomatis.
+The model adjusts light, reflections, and physics on its own.
 
-### 5. Kalau hasil masih terlihat AI
+### 5. When the result still looks AI
 
-Jangan langsung mengutak-atik realism rider. Urutan perbaikannya ada di
-[`docs/troubleshooting.md`](docs/troubleshooting.md) — ringkasnya: imperfeksi dulu,
-lalu cahaya, lalu lensa, lalu pose, baru rider.
-
----
-
-## Prompt Selalu Bahasa Inggris
-
-Percakapan boleh bahasa Indonesia, tapi prompt yang keluar selalu bahasa Inggris.
-Model Nano Banana secara konsisten memberi hasil lebih akurat pada prompt Inggris,
-terutama untuk istilah kamera dan material. Skill ini sudah mengatur itu otomatis.
+Do not start by tampering with the realism rider. The repair order lives in
+[`docs/troubleshooting.md`](docs/troubleshooting.md) — in short: imperfections first,
+then light, then lens, then pose, and only then the rider.
 
 ---
 
-## Konvensi Wajib di Repo Ini
+## Prompts are always English
 
-Ini standar yang berlaku untuk semua pekerjaan image generation di sini:
-
-1. **Cahaya natural saja** — tidak ada studio, softbox, ring light, atau flash.
-   Sebutkan sumber nyata dan arahnya, plus bentuk catchlight di mata.
-2. **Realism rider wajib** untuk setiap prompt yang mengandung manusia.
-3. **Identity preservation per karakter** — sheet ditempel verbatim.
-4. **Minimal dua imperfeksi bernama** di setiap potret.
-5. **Kualitas 8K HDR editorial** sebagai baseline.
+The conversation can be in any language, but the prompt that comes out is always
+English. Nano Banana models consistently return more accurate results on English
+prompt bodies, especially for camera and material terminology. The skill handles this
+automatically.
 
 ---
 
-## Kontribusi
+## Standing conventions in this repo
 
-Perubahan pada `SKILL.md` sebaiknya lewat pull request dengan contoh gambar sebelum
-dan sesudah, supaya efek perubahan bisa dinilai, bukan diperdebatkan.
+These apply to all image-generation work here:
 
-Character sheet baru masuk ke `docs/character-sheets.md`. Prompt yang terbukti bagus
-masuk ke `examples/prompt-library.md` — repo ini akan makin berguna seiring
-perpustakaan promptnya tumbuh.
+1. **Natural light only** — no studio, softbox, ring light, or flash. Name a real
+   source and its direction, plus the shape of the catchlight in the eyes.
+2. **The realism rider is mandatory** for every prompt containing a person.
+3. **Identity preservation per character** — the sheet is pasted verbatim.
+4. **At least two named imperfections** in every portrait.
+5. **8K HDR editorial quality** as the baseline.
 
 ---
 
-## Sumber
+## Contributing
+
+Changes to `SKILL.md` are best sent as a pull request with before-and-after example
+images, so the effect can be judged rather than argued.
+
+New character sheets go into `docs/character-sheets.md`. Prompts that proved themselves
+go into `examples/prompt-library.md` — this repo gets more useful as that library grows.
+
+---
+
+## Sources
 
 - [7 tips to get the most out of Nano Banana Pro](https://blog.google/products/gemini/prompting-tips-nano-banana-pro/) — Google Blog
 - [Nano Banana 2](https://blog.google/innovation-and-ai/technology/ai/nano-banana-2/) — Google Blog
 - [Nano Banana image generation](https://ai.google.dev/gemini-api/docs/image-generation) — Google AI for Developers
 
-Skill dasar oleh Kenneth Kousen. Modul Photoreal Human Realism ditambahkan untuk
-kebutuhan kerja karakter konsisten bergaya editorial.
+Base skill by Kenneth Kousen. The Photoreal Human Realism modules were added for
+consistent, editorial-style character work.

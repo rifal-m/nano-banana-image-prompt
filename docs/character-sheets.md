@@ -1,25 +1,25 @@
 # Character Sheets
 
-Sumber kebenaran tunggal untuk wajah setiap karakter berulang. Sheet di file ini
-ditempel **verbatim** ke dalam prompt setiap kali karakter tersebut muncul.
+The single source of truth for every recurring character's face. Sheets in this file
+are pasted **verbatim** into the prompt each time that character appears.
 
-## Aturan
+## Rules
 
-1. **Jangan pernah menulis ulang.** Copy-paste apa adanya. Mengganti "almond eyes"
-   menjadi "narrow eyes" menghasilkan orang yang berbeda.
-2. **Satu sheet, satu commit.** Perubahan sheet berarti perubahan wajah — perlakukan
-   seperti perubahan API. Tulis alasannya di commit message.
-3. **Sebutkan nama karakter di prompt.** Dalam scene multi-karakter, atribut akan
-   nyasar ke orang lain kalau namanya tidak diikat ke deskripsinya.
-4. **Urutan tetap** dalam scene grup. Deskripsikan karakter dengan urutan yang sama
-   setiap kali, jangan digabung dalam satu kalimat.
-5. **Tanda khusus harus punya posisi pasti.** "A mole" akan berpindah-pindah.
-   "A small mole above her left lip" tidak.
+1. **Never rewrite one.** Copy and paste it as-is. Changing "almond eyes" to "narrow
+   eyes" produces a different person.
+2. **One sheet, one commit.** A change to a sheet is a change to a face — treat it like
+   an API change. Put the reason in the commit message.
+3. **Name the character in the prompt.** In a multi-character scene, attributes land on
+   the wrong person if the name is not bound to the description.
+4. **Fixed order** in group scenes. Describe the characters in the same order every
+   time, and never merge them into one sentence.
+5. **Distinguishing marks need an exact position.** "A mole" will wander. "A small mole
+   above her left lip" will not.
 
 ## Template
 
 ```
-CHARACTER SHEET — [Nama]
+CHARACTER SHEET — [Name]
 - Age and build: 
 - Face shape: 
 - Eyes: 
@@ -31,7 +31,7 @@ CHARACTER SHEET — [Nama]
 - Wardrobe default: 
 ```
 
-Isi dalam bahasa Inggris — sheet ini masuk langsung ke prompt.
+Fill it in English — this sheet goes straight into the prompt.
 
 ---
 
@@ -58,50 +58,50 @@ CHARACTER SHEET — Aleira
 
 ```
 CHARACTER SHEET — Gita
-- Age and build: [isi]
-- Face shape: [isi]
-- Eyes: [isi]
-- Nose: [isi]
-- Lips: [isi]
-- Skin: [isi]
-- Hair: [isi]
-- Distinguishing marks: [isi]
-- Wardrobe default: [isi]
+- Age and build: [fill in]
+- Face shape: [fill in]
+- Eyes: [fill in]
+- Nose: [fill in]
+- Lips: [fill in]
+- Skin: [fill in]
+- Hair: [fill in]
+- Distinguishing marks: [fill in]
+- Wardrobe default: [fill in]
 ```
 
 ### Baskara
 
 ```
 CHARACTER SHEET — Baskara
-- Age and build: [isi]
-- Face shape: [isi]
-- Eyes: [isi]
-- Nose: [isi]
-- Lips: [isi]
-- Skin: [isi]
-- Hair: [isi]
-- Distinguishing marks: [isi]
-- Wardrobe default: [isi]
+- Age and build: [fill in]
+- Face shape: [fill in]
+- Eyes: [fill in]
+- Nose: [fill in]
+- Lips: [fill in]
+- Skin: [fill in]
+- Hair: [fill in]
+- Distinguishing marks: [fill in]
+- Wardrobe default: [fill in]
 ```
 
 ---
 
-## Kalau ada gambar referensi
+## When reference images are available
 
-Sheet tetap dipakai, ditambah instruksi eksplisit:
+Keep using the sheet, and add the explicit instruction:
 
 ```
 Keep facial features exactly the same as the reference image.
 The identity and attire of all characters must stay consistent.
 ```
 
-Nano Banana 2 menangani sampai 5 karakter konsisten dan 14 objek konsisten.
-Nano Banana Pro menerima sampai 14 gambar referensi, 6 di antaranya fidelitas tinggi.
+Nano Banana 2 handles up to 5 consistent characters and 14 consistent objects. Nano
+Banana Pro accepts up to 14 reference images, 6 of them at high fidelity.
 
-## Kalau wajah tetap melenceng antar gambar
+## When the face still drifts between images
 
-- Pastikan sheet ditempel utuh, bukan diringkas.
-- Kurangi jumlah karakter dalam satu frame — makin banyak orang, makin besar drift.
-- Pindah ke Nano Banana Pro untuk close-up yang identitasnya kritis.
-- Kunci dulu satu gambar yang benar, lalu pakai gambar itu sebagai referensi untuk
-  sisanya alih-alih generate paralel dari teks saja.
+- Make sure the sheet is pasted whole, not summarised.
+- Reduce the number of characters in a single frame — more people, more drift.
+- Move to Nano Banana Pro for close-ups where identity is critical.
+- Lock down one correct image first, then use that image as the reference for the rest
+  instead of generating them in parallel from text alone.

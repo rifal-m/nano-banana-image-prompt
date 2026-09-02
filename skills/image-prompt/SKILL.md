@@ -73,12 +73,6 @@ sharp focus on the eyes, cinematic realism, detailed facial features, realistic 
 rendering, 8K HDR, editorial photography quality.
 ```
 
-Indonesian source of this block, for reference:
-*Pertahankan identitas sempurna. Tampilkan pori-pori realistis, tekstur mikro kulit,
-transparansi kulit yang autentik, hamburan bawah permukaan yang realistis, kualitas
-kamera full-frame profesional, fokus tajam pada mata, realisme sinematik, fitur wajah
-yang detail, rendering kulit yang realistis, 8K HDR, kualitas fotografi editorial.*
-
 **What each clause is doing — do not drop any of them:**
 
 | Clause | Function |
