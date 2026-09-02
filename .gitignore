@@ -1,0 +1,16 @@
+# Output gambar — jangan dimasukkan ke repo
+*.png
+*.jpg
+*.jpeg
+*.webp
+output/
+renders/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
