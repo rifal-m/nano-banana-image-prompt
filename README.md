@@ -90,9 +90,18 @@ cp skills/image-prompt/SKILL.md ~/.agents/skills/image-prompt/SKILL.md
 Kalau skill ini hanya untuk satu proyek — misalnya satu brand atau satu seri karakter —
 simpan di dalam repo proyek tersebut:
 
+Dari dalam clone repo ini, installer sudah menyediakannya:
+
+```bash
+./install.sh --project
+```
+
+Atau manual, dijalankan dari root proyek tujuan:
+
 ```bash
 mkdir -p .claude/skills/image-prompt
-cp skills/image-prompt/SKILL.md .claude/skills/image-prompt/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/rifal-m/nano-banana-image-prompt/main/skills/image-prompt/SKILL.md \
+  -o .claude/skills/image-prompt/SKILL.md
 ```
 
 Skill per-project menang atas skill global dengan nama sama, jadi Anda bisa punya versi
