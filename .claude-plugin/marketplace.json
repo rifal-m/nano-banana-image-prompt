@@ -1,0 +1,31 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "nano-banana-image-prompt",
+  "id": "nano-banana-image-prompt",
+  "owner": {
+    "name": "rifal-m",
+    "url": "https://github.com/rifal-m"
+  },
+  "metadata": {
+    "description": "Nano Banana prompt-generation skill with photoreal human realism modules",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "nano-banana-image-prompt",
+      "source": "./",
+      "description": "Prompt generator for Google Nano Banana image models, extended for photorealistic human characters that do not read as AI-generated.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Rifal M"
+      },
+      "category": "design",
+      "keywords": [
+        "nano-banana",
+        "image-generation",
+        "prompt-engineering",
+        "photorealism"
+      ]
+    }
+  ]
+}

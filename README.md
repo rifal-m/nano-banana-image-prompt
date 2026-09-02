@@ -20,7 +20,10 @@ nano-banana-image-prompt/
 ├── README.md                       ← file ini
 ├── LICENSE
 ├── .gitignore
-├── install.sh                      ← installer otomatis
+├── .claude-plugin/
+│   ├── plugin.json                 ← manifest plugin Claude Code
+│   └── marketplace.json            ← agar repo bisa dipasang dari URL-nya
+├── install.sh                      ← installer manual (copy file)
 ├── skills/
 │   └── image-prompt/
 │       └── SKILL.md                ← skill utama
@@ -38,7 +41,22 @@ Sisanya dokumentasi untuk manusia.
 
 ## Instalasi
 
-### Cara cepat (otomatis)
+### Cara yang disarankan — sebagai plugin Claude Code
+
+Cukup dari URL repo, tanpa clone manual. Di dalam sesi Claude Code:
+
+```
+/plugin marketplace add rifal-m/nano-banana-image-prompt
+/plugin install nano-banana-image-prompt@nano-banana-image-prompt
+```
+
+Skill-nya ikut ter-update saat repo berubah, dan bisa dilepas lewat `/plugin`.
+
+> Jangan mengunduh `SKILL.md` dari root repo — file itu tidak ada di root.
+> Lokasi sebenarnya `skills/image-prompt/SKILL.md`, dan Claude Code menemukannya
+> lewat field `skills` di `.claude-plugin/plugin.json`.
+
+### Cara alternatif — clone lalu copy
 
 ```bash
 git clone https://github.com/rifal-m/nano-banana-image-prompt.git
@@ -46,14 +64,16 @@ cd nano-banana-image-prompt
 ./install.sh
 ```
 
-Installer akan menyalin skill ke Claude Code dan/atau Gemini CLI, tergantung folder
-mana yang ada di mesin Anda.
+Installer menyalin skill ke Claude Code dan/atau Gemini CLI, tergantung folder mana
+yang ada di mesin Anda. Pakai cara ini kalau tidak memakai sistem plugin, atau untuk
+Gemini CLI.
 
-### Claude Code (manual)
+### Satu file, tanpa clone
 
 ```bash
 mkdir -p ~/.claude/skills/image-prompt
-cp skills/image-prompt/SKILL.md ~/.claude/skills/image-prompt/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/rifal-m/nano-banana-image-prompt/main/skills/image-prompt/SKILL.md \
+  -o ~/.claude/skills/image-prompt/SKILL.md
 ```
 
 Restart sesi, lalu panggil dengan `/image-prompt`.

@@ -1,0 +1,19 @@
+{
+  "name": "nano-banana-image-prompt",
+  "description": "Generate optimized prompts for Google's Nano Banana image models (Nano Banana 2 and Nano Banana Pro), with a dedicated module for photorealistic human characters that do not look AI-generated. Includes a mandatory realism rider, an anti-AI-look checklist, and character-sheet identity locking for recurring characters.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Rifal M",
+    "url": "https://github.com/rifal-m"
+  },
+  "license": "MIT",
+  "keywords": [
+    "nano-banana",
+    "image-generation",
+    "prompt-engineering",
+    "photorealism",
+    "character-consistency",
+    "gemini"
+  ],
+  "skills": "./skills/"
+}
