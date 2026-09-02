@@ -6,8 +6,8 @@ description: >
   that do not look AI-generated. Use when the user invokes /image-prompt or asks to
   create, write, craft, or generate a prompt for Nano Banana, Gemini image generation,
   or AI image creation. Also triggers on "image prompt", "nano banana prompt",
-  "nano banana 2", "prompt karakter realistis", "biar tidak seperti AI", "photoreal
-  character", "skin texture prompt", or "help me describe an image".
+  "nano banana 2", "realistic character prompt", "make it not look AI-generated",
+  "photoreal character", "skin texture prompt", or "help me describe an image".
 ---
 
 # Nano Banana Prompt Generator — Photoreal Character Edition
