@@ -47,8 +47,12 @@ Cukup dari URL repo, tanpa clone manual. Di dalam sesi Claude Code:
 
 ```
 /plugin marketplace add rifal-m/nano-banana-image-prompt
-/plugin install nano-banana-image-prompt@nano-banana-image-prompt
+/plugin install nano-banana-image-prompt@rifal-m-skills
 ```
+
+Baris pertama menambahkan repo ini sebagai marketplace; baris kedua memasang plugin
+di dalamnya. Formatnya `plugin@marketplace` — nama marketplace-nya `rifal-m-skills`,
+bukan nama repo, karena marketplace yang sama akan menampung skill berikutnya.
 
 Skill-nya ikut ter-update saat repo berubah, dan bisa dilepas lewat `/plugin`.
 

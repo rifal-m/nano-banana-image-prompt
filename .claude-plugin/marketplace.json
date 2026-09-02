@@ -1,13 +1,13 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "nano-banana-image-prompt",
-  "id": "nano-banana-image-prompt",
+  "name": "rifal-m-skills",
+  "id": "rifal-m-skills",
   "owner": {
     "name": "rifal-m",
     "url": "https://github.com/rifal-m"
   },
   "metadata": {
-    "description": "Nano Banana prompt-generation skill with photoreal human realism modules",
+    "description": "Agent skills by rifal-m. Currently: Nano Banana prompt generation with photoreal human realism modules.",
     "version": "1.0.0"
   },
   "plugins": [
